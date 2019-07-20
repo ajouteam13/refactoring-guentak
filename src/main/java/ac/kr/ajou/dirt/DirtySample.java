@@ -12,11 +12,7 @@ class DirtySample {
         for (int i = 0; i < items.length; i++) {
             if (!compare_name(items[i], "Aged Brie")
                     && !compare_name(items[i], "Backstage passes to a TAFKAL80ETC concert")) {
-                if (items[i].quality > 0) {
-                    if (!compare_name(items[i], "Sulfuras, Hand of Ragnaros")) {
-                        items[i].quality = items[i].quality - 1;
-                    }
-                }
+                DecreaseQualityWhenQualityisPositiveandnameisnotSulfuras(items[i]);
             } else {
                 if (items[i].quality < 50) {
                     items[i].quality = items[i].quality + 1;
@@ -38,11 +34,7 @@ class DirtySample {
             if (items[i].sellIn < 0) {
                 if (!compare_name(items[i], "Aged Brie")) {
                     if (!compare_name(items[i], "Backstage passes to a TAFKAL80ETC concert")) {
-                        if (items[i].quality > 0) {
-                            if (!compare_name(items[i], "Sulfuras, Hand of Ragnaros")) {
-                                items[i].quality = items[i].quality - 1;
-                            }
-                        }
+                        DecreaseQualityWhenQualityisPositiveandnameisnotSulfuras(items[i]);
                     } else {
                         items[i].quality = 0;
                     }
@@ -51,6 +43,14 @@ class DirtySample {
                         items[i].quality = items[i].quality + 1;
                     }
                 }
+            }
+        }
+    }
+
+    private void DecreaseQualityWhenQualityisPositiveandnameisnotSulfuras(Item item) {
+        if (item.quality > 0) {
+            if (!compare_name(item, "Sulfuras, Hand of Ragnaros")) {
+                item.quality = item.quality - 1;
             }
         }
     }
