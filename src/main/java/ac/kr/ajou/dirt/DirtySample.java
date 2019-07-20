@@ -1,6 +1,7 @@
 package ac.kr.ajou.dirt;
 
 class DirtySample {
+    private final UpdateSellln updateSellln = new UpdateSellln(this);
     Item[] items;
 
     public DirtySample(Item[] items) {
@@ -32,9 +33,7 @@ class DirtySample {
                 }
             }
 
-            if (!compare_name(items[i], "Sulfuras, Hand of Ragnaros")) {
-                items[i].sellIn = items[i].sellIn - 1;
-            }
+            updateSellln.updateSellln(items[i]);
 
             if (items[i].sellIn < 0) {
                 if (!compare_name(items[i], "Aged Brie")) {
@@ -56,7 +55,11 @@ class DirtySample {
         }
     }
 
-    private boolean compare_name(Item item, String nametocompare) {
+    private void updateSellln(Item item) {
+        updateSellln.updateSellln(item);
+    }
+
+    public boolean compare_name(Item item, String nametocompare) {
         return item.name.equals(nametocompare);
     }
 }
