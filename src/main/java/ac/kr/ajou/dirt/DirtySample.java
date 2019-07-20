@@ -22,15 +22,11 @@ class DirtySample {
 
                     if (compare_name(items[i], "Backstage passes to a TAFKAL80ETC concert")) {
                         if (items[i].sellIn < 11) {
-                            if (items[i].quality < 50) { // 맨위 조건하고 겹치므로 삭제
                                 items[i].quality = items[i].quality + 1;
-                            }
                         }
 
                         if (items[i].sellIn < 6) { //위 조건하고 동일 if문 전체삭제가능
-                            if (items[i].quality < 50) {
                                 items[i].quality = items[i].quality + 1;
-                            }
                         }
                     }
                 }
